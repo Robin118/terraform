@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      - MYSQL_ROOT_PASSWORD=pucese
+      - MYSQL_DATABASE=wordpress
+      - MYSQL_USER=robin
+      - MYSQL_PASSWORD=pucese
+    ports:
+      - 3306:3306
+    volumes:
+      - dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      - mysql
+    restart: always 
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306  
+    ports:
+      - 8080:80
+  
+volumes:
+  dbdata:
