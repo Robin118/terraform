@@ -17,6 +17,7 @@ add-apt-repository \
 apt-get update -y
 apt-get install -y docker-ce docker-ce-cli containerd.io 
 systemctl enable docker
+systemctl start docker
 
 echo "Instalando Docker Compose" 
 curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
