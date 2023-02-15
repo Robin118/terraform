@@ -307,7 +307,7 @@ resource "azurerm_log_analytics_workspace" "logs_cloudazure" {
 
   count = length(azurerm_network_interface.public_subnet)
 
-  name                = "example-log-analytics-workspace-${count.index}"
+  name                = "log-analytics-${count.index}"
   location            = azurerm_resource_group.public_subnet.location
   resource_group_name = azurerm_resource_group.public_subnet.name
 
@@ -319,7 +319,7 @@ resource "azurerm_storage_account" "public_subnet" {
   count = length(azurerm_network_interface.public_subnet)
 
   name                     = "account_storage${count.index}"
-  resource_group_name     = azurerm_resource_group.public_subnet.name
+  resource_group_name      = azurerm_resource_group.public_subnet.name
   location                 = azurerm_resource_group.public_subnet.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
